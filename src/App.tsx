@@ -1,70 +1,77 @@
 import './App.css'
 
 function App() {
+  const stack = [
+    { name: 'C', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+    { name: 'C++', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+    { name: 'CSS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+    { name: 'HTML', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+    { name: 'Java', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg' },
+    { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+    { name: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+    { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+    { name: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+    { name: 'MySQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+    { name: 'Tailwind CSS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+    { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+    { name: 'Vite', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg' }
+  ];
+
+  const links = [
+    { href: "mailto:cjay.munoz@protonmail.com", title: "Send an email", icon: "bi bi-envelope-fill" },
+    { href: "https://github.com/CjayDoesCode", title: "View GitHub profile", icon: "bi bi-github" },
+    { href: "https://linkedin.com/in/cjay-muñoz/", title: "View LinkedIn profile", icon: "bi bi-linkedin" }
+  ];
+
   return (
-    <main>
-      <header>
-        <h1>Cjay Muñoz, 20</h1>
-        <p>Software Developer</p>
-        <p>Angeles City, Philippines</p>
-        <nav>
-          <ul>
-            <li>
-              <a href="mailto:cjay.munoz@protonmail.com" title="Send an email">Email</a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/CjayDoesCode"
-                target="_blank"
-                rel="noreferrer"
-                title="View GitHub profile"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://linkedin.com/in/cjay-muñoz/"
-                target="_blank"
-                rel="noreferrer"
-                title="View LinkedIn profile"
-              >
-                LinkedIn
-              </a>
-            </li>
+    <>
+      <header className="mb-8 tracking-wide">
+        <h1 className="text-xl/10 font-semibold">Cjay Muñoz</h1>
+        <p className="text-zinc-300">Software Developer</p>
+        <p className="text-zinc-300">Angeles City, Philippines</p>
+        <nav className="mt-4">
+          <ul className="flex flex-row flex-wrap gap-2">
+            {links.map(({ href, title, icon }) => (
+              <li key={href}>
+                <a
+                  className="flex justify-center items-center border-1 border-zinc-700 rounded-md size-12 text-2xl text-zinc-300 hover:bg-zinc-700 transition"
+                  href={href}
+                  target={href.startsWith('http') ? "_blank" : undefined}
+                  rel={href.startsWith('http') ? "noreferrer" : undefined}
+                  title={title}
+                >
+                  <i className={icon} aria-hidden="true"></i>
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </header>
-      <section>
-        <h2>About me</h2>
-        <p>
-          What's up! I'm Cjay Muñoz, a first year Computer Science student.
-          I love solving coding problems and tinkering with both computer software and hardware.
+      <section className="mb-8 tracking-wide">
+        <h2 className="text-xl/10 font-semibold">About me</h2>
+        <p className="text-zinc-300">
+          Hey! I'm Cjay Muñoz, a first-year Computer Science student at City College of Angeles, Philippines.
+          I enjoy solving coding challenges and tinkering with both software and hardware.
+          Right now, I'm looking for remote internships in software or web development to level up my skills and gain some real-world experience.
         </p>
       </section>
-      <section>
-        <h2>Tech Stack</h2>
-        <ul>
-          <li>C</li>
-          <li>C++</li>
-          <li>CSS</li>
-          <li>HTML</li>
-          <li>Java</li>
-          <li>JavaScript</li>
-          <li>Next.js</li>
-          <li>Python</li>
-          <li>React</li>
-          <li>SQL</li>
-          <li>Tailwind CSS</li>
-          <li>TypeScript</li>
-          <li>Vite</li>
+      <section className="mb-8 tracking-wide">
+        <h2 className="text-xl/10 font-semibold">Tech Stack</h2>
+        <ul className="mt-2 flex flex-wrap justify-center gap-4">
+          {stack.map(({ name, src }) => (
+            <li key={name} className="size-10">
+              <img src={src} alt={name} />
+            </li>
+          ))}
         </ul>
       </section>
-      <footer>
-        <p>
-          This web app was built with React, Tailwind CSS, and Vite. You can view the source code on&nbsp;
+      <footer className="tracking-wide">
+        <p className="text-sm text-center">
+          This web app was built with React, Tailwind CSS, and Vite.
+          You can view the source code on{' '}
           <a
-            href="https://github.com/CjayDoesCode"
+            className="underline"
+            href="https://github.com/CjayDoesCode/cjaydoescode.github.io"
             target="_blank"
             rel="noreferrer"
             title="GitHub repository"
@@ -73,7 +80,7 @@ function App() {
           </a>.
         </p>
       </footer>
-    </main>
+    </>
   )
 }
 
