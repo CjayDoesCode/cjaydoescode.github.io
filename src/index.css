@@ -5,3 +5,22 @@
 @theme {
     --font-inter: "Inter", sans-serif;
 }
+
+body {
+    /* typography */
+    font-family: var(--font-inter);
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-zinc-50);
+
+    /* backgrounds */
+    background-color: var(--color-zinc-950);
+}
+
+main {
+    /* spacing */
+    padding: calc(var(--spacing) * 4);
+    margin: auto;
+
+    /* sizing */
+    max-width: var(--container-2xl);
+}

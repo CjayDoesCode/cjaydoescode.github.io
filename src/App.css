@@ -1,0 +1,119 @@
+header,
+section {
+    /* spacing */
+    margin-bottom: calc(var(--spacing) * 8);
+}
+
+h1 {
+    /* typography */
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+    font-weight: 500;
+
+    /* spacing */
+    margin-bottom: calc(var(--spacing) * 2);
+}
+
+h2 {
+    /* typography */
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+    font-weight: 500;
+
+    /* spacing */
+    margin-bottom: calc(var(--spacing) * 2);
+}
+
+p {
+    /* typography */
+    color: var(--color-zinc-300);
+}
+
+.header-profile {
+    /* layout */
+    display: flex;
+
+    /* flexbox & grid */
+    align-items: center;
+    gap: calc(var(--spacing) * 4);
+}
+
+.header-links {
+    /* spacing */
+    margin-top: calc(var(--spacing) * 4);
+}
+
+.header-links>ul {
+    /* layout */
+    display: flex;
+
+    /* flexbox & grid */
+    flex-wrap: wrap;
+    gap: calc(var(--spacing) * 2);
+}
+
+.header-links>ul>li>a {
+    /* layout */
+    display: flex;
+
+    /* flexbox & grid */
+    justify-content: center;
+    align-items: center;
+
+    /* sizing */
+    width: calc(var(--spacing) * 12);
+    height: calc(var(--spacing) * 12);
+
+    /* typography */
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+    color: var(--color-zinc-300);
+
+    /* borders */
+    border-radius: var(--radius-lg);
+    border-width: 1px;
+    border-color: var(--color-zinc-700);
+
+    /* transitions & animation */
+    transition-property: background-color;
+    transition-duration: var(--default-transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
+}
+
+.header-links>ul>li>a:hover {
+    /* backgrounds */
+    background-color: var(--color-zinc-700);
+}
+
+.tech-stack {
+    /* layout */
+    display: flex;
+
+    /* flexbox & grid */
+    flex-wrap: wrap;
+    gap: calc(var(--spacing) * 2);
+}
+
+.tech-stack>li {
+    /* layout */
+    display: flex;
+
+    /* flexbox & grid */
+    align-items: center;
+    gap: calc(var(--spacing) * 2);
+
+    /* spacing */
+    padding-inline: calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing) * 1);
+
+    /* borders */
+    border-radius: calc(infinity * 1px);
+    border-width: 1px;
+    border-color: var(--color-zinc-700);
+}
+
+.tech-stack>li>img {
+    /* sizing */
+    width: calc(var(--spacing) * 4);
+    height: calc(var(--spacing) * 4);
+}
