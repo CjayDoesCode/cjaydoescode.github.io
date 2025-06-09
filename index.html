@@ -35,6 +35,20 @@
 
       document.documentElement.style.setProperty('overflow', 'hidden');
       document.body.appendChild(overlay);
+
+      window.addEventListener('load', () => {
+        const overlay = document.getElementById('overlay');
+        overlay.style.transition = 'opacity 500ms ease-in-out';
+
+        setTimeout(() => {
+          overlay.style.opacity = '0';
+
+          overlay.addEventListener('transitionend', () => {
+            overlay.remove();
+            document.documentElement.style.removeProperty('overflow');
+          }, { once: true });
+        }, 500);
+      }, { once: true });
     })()
   </script>
   <main id='root'></main>

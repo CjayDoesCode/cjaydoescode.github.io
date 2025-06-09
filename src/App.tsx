@@ -52,30 +52,6 @@ export default function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  useEffect(() => {
-    const onPageLoad = () => {
-      const overlay = document.getElementById('overlay');
-      if (!overlay) return;
-
-      overlay.style.transition = 'opacity 500ms ease-in-out';
-
-      setTimeout(() => {
-        overlay.style.opacity = '0';
-
-        overlay.addEventListener('transitionend', () => {
-          overlay.remove();
-          document.documentElement.style.removeProperty('overflow');
-        }, { once: true });
-      }, 500);
-    };
-
-    if (document.readyState === 'complete') {
-      onPageLoad();
-    } else {
-      window.addEventListener('load', onPageLoad, { once: true });
-    }
-  }, []);
-
   function toggleTheme(): void {
     setTheme(t => t === 'light' ? 'dark' : 'light');
   }
