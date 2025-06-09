@@ -1,96 +1,72 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("/fonts/Inter-Regular.woff2") format("woff2");
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
 }
 
 @theme {
-    --font-inter: 'Inter', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
 
-html, body {
-    /* sizing */
-    width: 100%;
-    height: 100%;
+html,
+body {
+  /* sizing */
+  @apply size-full;
 }
 
 html {
-    /* typography */
-    font-family: var(--font-inter);
-    letter-spacing: var(--tracking-wide);
-    color: var(--color-zinc-950);
+  /* typography */
+  @apply font-inter tracking-wide text-zinc-950 dark:text-zinc-50;
 
-    /* transitions & animation */
-    transition-property: color;
-    transition-duration: 300ms;
-    transition-timing-function: var(--default-transition-timing-function);
-
-    &:where(.dark, .dark *) {
-        color: var(--color-zinc-50);
-    }
+  /* transitions & animation */
+  @apply transition-colors duration-500;
 }
 
 body {
-    /* backgrounds */
-    background-color: var(--color-zinc-50);
+  /* backgrounds */
+  @apply bg-zinc-50 dark:bg-zinc-950;
 
-    /* transitions & animation */
-    transition-property: background-color;
-    transition-duration: 300ms;
-    transition-timing-function: var(--default-transition-timing-function);
-
-    &:where(.dark, .dark *) {
-        background-color: var(--color-zinc-950);
-    }
+  /* transitions & animation */
+  @apply transition-colors duration-500;
 }
 
 main {
-    /* spacing */
-    padding: calc(var(--spacing) * 4);
-    margin: auto;
+  /* spacing */
+  @apply p-4 m-auto;
 
-    /* sizing */
-    max-width: var(--container-2xl);
-    min-height: 100%;
+  /* sizing */
+  @apply max-w-2xl min-h-full;
 }
 
 h1,
 h2 {
-    /* typography */
-    font-weight: 500;
+  /* typography */
+  @apply font-medium;
 
-    /* spacing */
-    margin-bottom: calc(var(--spacing) * 2);
+  /* spacing */
+  @apply mb-2;
 }
 
 h1 {
-    /* typography */
-    font-size: var(--text-2xl);
-    line-height: var(--text-2xl--line-height);
+  /* typography */
+  @apply text-2xl;
 }
 
 h2 {
-    /* typography */
-    font-size: var(--text-xl);
-    line-height: var(--text-xl--line-height);
+  /* typography */
+  @apply text-xl;
 }
 
 p {
-    /* typography */
-    color: var(--color-zinc-700);
+  /* typography */
+  @apply text-zinc-700 dark:text-zinc-300;
 
-    /* transitions & animation */
-    transition-property: color;
-    transition-duration: 300ms;
-    transition-timing-function: var(--default-transition-timing-function);
-
-    &:where(.dark, .dark *) {
-        color: var(--color-zinc-300)
-    }
+  /* transitions & animation */
+  @apply transition-colors duration-500;
 }

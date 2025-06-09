@@ -1,135 +1,69 @@
-.header-links li a {
-    /* layout */
-    display: flex;
+@import 'tailwindcss';
 
-    /* flexbox & grid */
-    justify-content: center;
-    align-items: center;
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-    /* sizing */
-    width: calc(var(--spacing) * 12);
-    height: calc(var(--spacing) * 12);
+.header-link {
+  /* layout */
+  @apply flex;
 
-    /* typography */
-    font-size: var(--text-2xl);
-    line-height: var(--text-2xl--line-height);
-    color: var(--color-zinc-700);
+  /* flexbox & grid */
+  @apply justify-center items-center;
 
-    /* borders */
-    border-radius: var(--radius-lg);
-    border-width: 1px;
-    border-color: var(--color-zinc-300);
+  /* sizing */
+  @apply size-12;
 
-    /* transitions & animation */
-    transition-property: color, background-color, border-color;
-    transition-duration: 300ms;
-    transition-timing-function: var(--default-transition-timing-function);
+  /* typography */
+  @apply text-2xl text-zinc-700 dark:text-zinc-300;
 
-    &:where(.dark, .dark *) {
-        color: var(--color-zinc-300);
-        border-color: var(--color-zinc-700);
-    }
+  /* backgrounds */
+  @apply hover:bg-zinc-200 dark:hover:bg-zinc-800;
 
-    &:hover {
-        background-color: var(--color-zinc-300);
+  /* borders */
+  @apply rounded-lg border border-zinc-200 dark:border-zinc-800;
 
-        &:where(.dark, .dark *) {
-            background-color: var(--color-zinc-700);
-        }
-    }
-
-    &:active {
-        background-color: var(--color-zinc-50);
-
-        &:where(.dark, .dark *) {
-            background-color: var(--color-zinc-950);
-        }
-    }
+  /* transitions & animation */
+  @apply transition-colors duration-500;
 }
 
 .theme-button {
-    /* layout */
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
+  /* layout */
+  @apply flex absolute top-0 right-0;
 
-    /* flexbox & grid */
-    justify-content: center;
-    align-items: center;
+  /* flexbox & grid */
+  @apply justify-center items-center;
 
-    /* sizing */
-    width: calc(var(--spacing) * 12);
-    height: calc(var(--spacing) * 12);
+  /* sizing */
+  @apply size-12;
 
-    /* typography */
-    font-size: var(--text-2xl);
-    line-height: var(--text-2xl--line-height);
-    color: var(--color-zinc-700);
+  /* typography */
+  @apply text-2xl text-zinc-700 dark:text-zinc-300;
 
-    /* borders */
-    border-radius: var(--radius-lg);
-    border-width: 1px;
-    border-color: var(--color-zinc-300);
+  /* backgrounds */
+  @apply hover:bg-zinc-200 dark:hover:bg-zinc-800;
 
-    /* transitions & animation */
-    transition-property: color, background-color, border-color;
-    transition-duration: 300ms;
-    transition-timing-function: var(--default-transition-timing-function);
+  /* borders */
+  @apply rounded-lg border border-zinc-200 dark:border-zinc-800;
 
-    /* interactivity */
-    cursor: pointer;
+  /* transitions & animation */
+  @apply transition-colors duration-500;
 
-    &:where(.dark, .dark *) {
-        color: var(--color-zinc-300);
-        border-color: var(--color-zinc-700);
-    }
-
-    &:hover {
-        background-color: var(--color-zinc-300);
-
-        &:where(.dark, .dark *) {
-            background-color: var(--color-zinc-700);
-        }
-    }
-
-    &:active {
-        background-color: var(--color-zinc-50);
-
-        &:where(.dark, .dark *) {
-            background-color: var(--color-zinc-950);
-        }
-    }
+  /* interactivity */
+  @apply cursor-pointer;
 }
 
-.tech-stack li {
-    /* layout */
-    display: flex;
+.tech-stack-item {
+  /* layout */
+  @apply flex;
 
-    /* flexbox & grid */
-    align-items: center;
-    gap: calc(var(--spacing) * 2);
+  /* flexbox & grid */
+  @apply items-center gap-2;
 
-    /* spacing */
-    padding-inline: calc(var(--spacing) * 3);
-    padding-block: calc(var(--spacing) * 1);
+  /* spacing */
+  @apply px-3 py-1;
 
-    /* borders */
-    border-radius: calc(infinity * 1px);
-    border-width: 1px;
-    border-color: var(--color-zinc-300);
+  /* borders */
+  @apply rounded-full border border-zinc-200 dark:border-zinc-800;
 
-    /* transitions & animation */
-    transition-property: border-color;
-    transition-duration: 300ms;
-    transition-timing-function: var(--default-transition-timing-function);
-
-    &:where(.dark, .dark *) {
-        border-color: var(--color-zinc-700);
-    }
-
-    & img {
-        width: calc(var(--spacing) * 4);
-        height: calc(var(--spacing) * 4);
-    }
+  /* transitions & animation */
+  @apply transition-colors duration-500;
 }

@@ -11,6 +11,32 @@
 </head>
 
 <body>
+  <script>
+    (() => {
+      const theme = localStorage.getItem('theme') ?? (
+        window.matchMedia('(prefers-color-scheme: light)').matches
+          ? 'light'
+          : 'dark'
+      );
+
+      const overlay = document.createElement('div');
+      overlay.id = 'overlay';
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100dvw;
+        height: 100dvh;
+        z-index: 50;
+        background-color: ${theme === 'light'
+          ? 'oklch(98.5% 0 0)'
+          : 'oklch(14.1% 0.005 285.823)'};
+      `;
+
+      document.documentElement.style.setProperty('overflow', 'hidden');
+      document.body.appendChild(overlay);
+    })()
+  </script>
   <main id='root'></main>
   <script type='module' src='/src/main.tsx'></script>
 </body>
