@@ -86,7 +86,7 @@ function Header({ isDark, handleClick }: HeaderProps) {
         </ul>
       </nav>
       <button className='theme-button' onClick={handleClick}>
-        <i className={isDark ? 'bi bi-moon-fill' : 'bi bi-sun-fill'}></i>
+        <i className={isDark ? 'bi bi-brightness-low-fill' : 'bi bi-brightness-high-fill'}></i>
       </button>
     </header>
   );

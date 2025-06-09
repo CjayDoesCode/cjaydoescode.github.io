@@ -128,7 +128,7 @@
         border-color: var(--color-zinc-700);
     }
 
-    &>img {
+    & img {
         width: calc(var(--spacing) * 4);
         height: calc(var(--spacing) * 4);
     }
