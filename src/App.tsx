@@ -1,31 +1,57 @@
-import './App.css'
+import { useEffect, useState } from 'react';
+import { getDeviconUrl } from './utils';
+import './App.css';
 
-const headerLinks: { href: string; icon: string; isExternal?: boolean }[] = [
+interface HeaderLink {
+  href: string;
+  icon: string;
+  isExternal?: boolean;
+}
+
+const headerLinks: HeaderLink[] = [
   { href: 'https://github.com/CjayDoesCode', icon: 'bi bi-github' },
   { href: 'https://linkedin.com/in/cjay-muñoz/', icon: 'bi bi-linkedin' },
   { href: 'mailto:cjay.munoz@protonmail.com', icon: 'bi bi-envelope-fill', isExternal: true }
 ];
 
-const techStack: { name: string; id: string }[] = [
-  { name: "C", id: "c" },
-  { name: "C++", id: "cplusplus" },
-  { name: "CSS", id: "css3" },
-  { name: "HTML", id: "html5" },
-  { name: "Java", id: "java" },
-  { name: "JavaScript", id: "javascript" },
-  { name: "Next.js", id: "nextjs" },
-  { name: "Python", id: "python" },
-  { name: "React", id: "react" },
-  { name: "MySQL", id: "mysql" },
-  { name: "Tailwind CSS", id: "tailwindcss" },
-  { name: "TypeScript", id: "typescript" },
-  { name: "Vite", id: "vitejs" }
+interface Tech {
+  id: string;
+  name: string;
+}
+
+const techStack: Tech[] = [
+  { id: 'c', name: 'C' },
+  { id: 'cplusplus', name: 'C++' },
+  { id: 'css3', name: 'CSS' },
+  { id: 'html5', name: 'HTML' },
+  { id: 'java', name: 'Java' },
+  { id: 'javascript', name: 'JavaScript' },
+  { id: 'nextjs', name: 'Next.js' },
+  { id: 'python', name: 'Python' },
+  { id: 'react', name: 'React' },
+  { id: 'mysql', name: 'MySQL' },
+  { id: 'tailwindcss', name: 'Tailwind CSS' },
+  { id: 'typescript', name: 'TypeScript' },
+  { id: 'vitejs', name: 'Vite' }
 ];
 
+const sourceCodeLink: string = 'https://github.com/CjayDoesCode/cjaydoescode.github.io';
+
 export default function App() {
+  const [isDark, setIsDark] = useState<boolean>(() => localStorage.getItem('theme') !== 'light');
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  function toggleTheme(): void {
+    setIsDark(i => !i);
+  }
+
   return (
     <>
-      <Header />
+      <Header isDark={isDark} handleClick={toggleTheme} />
       <AboutMeSection />
       <TechStackSection />
       <Footer />
@@ -33,34 +59,42 @@ export default function App() {
   );
 }
 
-function Header() {
+interface HeaderProps {
+  isDark: boolean;
+  handleClick: () => void;
+}
+
+function Header({ isDark, handleClick }: HeaderProps) {
   return (
-    <header>
+    <header className='relative mb-8'>
       <h1>Cjay Muñoz</h1>
-      <p><i className="bi bi-code-slash"></i> Software Developer</p>
-      <p><i className="bi bi-geo-alt-fill"></i> Angeles City, Philippines</p>
-      <nav className="header-links">
-        <ul>
-          {headerLinks.map(({ href, icon, isExternal = false }, index) => (
-            <li key={index}>
+      <p><i className='bi bi-code-slash'></i> Software Developer</p>
+      <p><i className='bi bi-geo-alt-fill'></i> Angeles City, Philippines</p>
+      <nav className='mt-4'>
+        <ul className='header-links flex flex-wrap gap-2'>
+          {headerLinks.map(({ href, icon, isExternal = false }) => (
+            <li key={href}>
               <a
                 href={href}
-                rel={isExternal ? "noreferrer" : undefined}
-                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? 'noreferrer' : undefined}
+                target={isExternal ? '_blank' : undefined}
               >
-                <i className={icon} aria-hidden="true"></i>
+                <i className={icon} aria-hidden='true'></i>
               </a>
             </li>
           ))}
         </ul>
       </nav>
+      <button className='theme-button' onClick={handleClick}>
+        <i className={isDark ? 'bi bi-moon-fill' : 'bi bi-sun-fill'}></i>
+      </button>
     </header>
   );
 }
 
 function AboutMeSection() {
   return (
-    <section>
+    <section className='mb-8'>
       <h2>About me</h2>
       <p>
         Hey! I'm Cjay Muñoz, a first-year Computer Science student at City College of Angeles, Philippines.
@@ -74,34 +108,35 @@ function AboutMeSection() {
 
 function TechStackSection() {
   return (
-    <section>
+    <section className='mb-8'>
       <h2>Tech Stack</h2>
-      <ul className="tech-stack">
-        {techStack.map(({ name, id }, index) => (
-          <li key={index}>
+      <ul className='tech-stack flex flex-wrap gap-2'>
+        {techStack.map(({ id, name }) => (
+          <li key={id}>
             <img
-              src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${id}/${id}-original.svg`}
-              alt=""
+              src={getDeviconUrl(id)}
+              alt=''
+              loading='lazy'
             />
             <p>{name}</p>
           </li>
         ))}
       </ul>
     </section>
-  )
+  );
 }
 
 function Footer() {
   return (
     <footer>
-      <p className="text-center">
+      <p className='text-center'>
         This web app was built with React, Tailwind CSS, and Vite.
         You can view the source code on {
           <a
-            className="underline"
-            href="https://github.com/CjayDoesCode/cjaydoescode.github.io"
-            rel="noreferrer"
-            target="_blank"
+            className='underline'
+            href={sourceCodeLink}
+            rel='noreferrer'
+            target='_blank'
           >
             GitHub
           </a>
