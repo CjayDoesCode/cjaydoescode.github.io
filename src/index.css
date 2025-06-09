@@ -20,6 +20,11 @@ html {
     letter-spacing: var(--tracking-wide);
     color: var(--color-zinc-950);
 
+    /* transitions & animation */
+    transition-property: color;
+    transition-duration: 300ms;
+    transition-timing-function: var(--default-transition-timing-function);
+
     &:where(.dark, .dark *) {
         color: var(--color-zinc-50);
     }
@@ -30,7 +35,7 @@ body {
     background-color: var(--color-zinc-50);
 
     /* transitions & animation */
-    transition-property: color, background-color;
+    transition-property: background-color;
     transition-duration: 300ms;
     transition-timing-function: var(--default-transition-timing-function);
 
