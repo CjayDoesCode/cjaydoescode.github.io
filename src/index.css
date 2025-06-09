@@ -19,6 +19,10 @@ html {
     font-family: var(--font-inter);
     letter-spacing: var(--tracking-wide);
     color: var(--color-zinc-950);
+
+    &:where(.dark, .dark *) {
+        color: var(--color-zinc-50);
+    }
 }
 
 body {
@@ -31,7 +35,6 @@ body {
     transition-timing-function: var(--default-transition-timing-function);
 
     &:where(.dark, .dark *) {
-        color: var(--color-zinc-50);
         background-color: var(--color-zinc-950);
     }
 }
